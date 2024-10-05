@@ -41,7 +41,7 @@
 </head>
 
 <body class="font-lato bg-[#FFFFFF]">
-  <header>
+  <header class="bg-gradient-to-b from-green-200 to-gray-50">
     <nav class=" w-11/12 mx-auto py-3">
       <div class="navbar flex justify-between">
         <div class="logo gap-2">
@@ -74,7 +74,7 @@
           content of a page when looking
           at its
           layout. The point of using Lorem Ipsum is that it has a.</p>
-        <button class="bg-[#0E7A81] px-6 py-3 text-white rounded-lg ">View More</button>
+        <button class="bg-[#0E7A81] px-6 py-3 text-white rounded-lg cursor-pointer">View More</button>
       </div>
       <!-- Banner section ends here-->
 
@@ -95,12 +95,19 @@
       </div>
 
       <!-- Dynamic section starts here-->
+      <section class="w-11/12 mx-auto py-20">
+
+        <div id="pet-container" class="flex flex-col md:flex-row space-y-7 md:space-y-0 justify-between ">
+
+        </div>
+
+      </section>
 
   </main>
 
   <!-- Footer section starts here-->
   <footer class="bg-[#131313] text-gray-400">
-    <div class="flex justify-between py-20 px-14">
+    <div class="flex flex-col md:flex-row justify-between  py-20 gap-y-8 px-14">
       <div class="space-y-5">
         <div class="logo gap-2 flex">
           <img src="images/logo.webp" alt="logo">
@@ -139,10 +146,10 @@
           <button class="bg-[#0E7A81] px-8 py-4 rounded-lg text-white font-semibold">Subscribe</button>
         </div>
       </div>
-
     </div>
   </footer>
 
+  <script src="js/script.js"></script>
 </body>
 
 </html>
