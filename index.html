@@ -97,10 +97,27 @@
       <!-- Dynamic section starts here-->
       <section class="w-11/12 mx-auto py-20">
 
-        <div id="pet-container" class="flex flex-col md:flex-row space-y-7 md:space-y-0 justify-between ">
-
+        <div id="category-container" class="flex flex-col md:flex-row space-y-7 md:space-y-0 justify-between ">
+        </div>
+      </section>
+      <!-- Displey pets Dynamic section -->
+      <section class="w-11/12 mx-auto">
+        <div class="flex justify-between items-start flex-col md:flex-row gap-4">
+          <h2 class="font-extrabold text-xl md:text-3xl">Best Deal For you </h2>
+          <button class="btn md:btn-lg rounded-md
+            text-lg font-semibold bg-[#0E7A81] text-white">Sort by Price</button>
         </div>
 
+        <div class="flex-col md:flex-row flex gap-10">
+          <div class="bg-red-500 h-[300px] w-[200px] mt-6 self-start order-1 md:order-2">
+
+          </div>
+
+          <div id="display-pets"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6  text-start gap-10 order-2 md:order-1">
+          </div>
+
+        </div>
       </section>
 
   </main>
