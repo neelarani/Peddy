@@ -63,19 +63,24 @@ const displayAllPets = pets => {
   }
   pets.forEach(pet => {
     const div = document.createElement('div');
-    const petName = pet.breed ? pet.breed : 'Not Published';
+    const petName = pet.pet_name ? pet.pet_name : 'Not Published';
+    const petBreed = pet.breed ? pet.breed : 'Not Available';
     const petBirthDay = pet.date_of_birth ? pet.date_of_birth : 'Not Available';
     const petGender = pet.gender ? pet.gender : 'Not Mentioned';
     const petPrice = pet.price ? pet.price : 'Not Available';
 
     div.innerHTML = `
-            <div class="card bg-base-100 w-80  shadow-xl h-[400px]  object-cover">
+            <div class="card bg-base-100 w-76 shadow-xl h-[400px]  object-cover">
               <figure class="p-4">
-                <img src=${pet.image} />
+                <img src=${pet.image}/>
               </figure>
               <div class="card-body">
-                <h2 class="card-title">${petName}</h2>
-                <p><i class="fa-regular fa-calendar-days p-2"></i>
+              <h2 class="font-extrabold text-xl">${petName}</h2>
+                <p>
+                  <i class="fa-solid fa-bowl-food"></i>
+                  ${petBreed}
+                </p>
+                <p><i class="fa-regular fa-calendar-days "></i>
                 ${petBirthDay}</p>
                 <p><i class="fa-solid fa-mercury"></i>
                   Gender: ${petGender}
