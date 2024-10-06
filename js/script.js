@@ -35,15 +35,26 @@ const loadAllPet = async (category = '') => {
   displayAllPets(filterPets);
 };
 
+const handleAddPet = pet => {
+  const selectPet = document.getElementById('selected-pet');
+  const div = document.createElement('div');
+  div.innerHTML = `
+    <div class=" rounded-lg border-2 p-2 m-3">
+      <img src=${pet.image}/>
+    </div>
+  `;
+  selectPet.appendChild(div);
+};
+
 const displayAllPets = pets => {
   const displayPets = document.getElementById('display-pets');
   displayPets.innerHTML = '';
   if (pets.length === 0) {
     const div = document.createElement('div');
     div.innerHTML = `
-        <div class="text-center flex flex-col justify-center items-center w-[800px] ">
+        <div class="text-center flex flex-col justify-center items-center w-11/12">
         <img src="/images/error.webp"/>
-        <h3 class="text-xl md:text-4xl font-extrabold">No Information Available</h3>
+        <h3 class="text-xl md:text-3xl font-extrabold">No Information Available</h3>
         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
         </div>
     `;
@@ -52,23 +63,28 @@ const displayAllPets = pets => {
   }
   pets.forEach(pet => {
     const div = document.createElement('div');
+    const petName = pet.breed ? pet.breed : 'Not Published';
+    const petBirthDay = pet.date_of_birth ? pet.date_of_birth : 'Not Available';
+    const petGender = pet.gender ? pet.gender : 'Not Mentioned';
+    const petPrice = pet.price ? pet.price : 'Not Available';
+
     div.innerHTML = `
             <div class="card bg-base-100 w-80  shadow-xl h-[400px]  object-cover">
               <figure class="p-4">
                 <img src=${pet.image} />
               </figure>
               <div class="card-body">
-                <h2 class="card-title">${pet.breed}</h2>
+                <h2 class="card-title">${petName}</h2>
                 <p><i class="fa-regular fa-calendar-days p-2"></i>
-                ${pet.date_of_birth}</p>
+                ${petBirthDay}</p>
                 <p><i class="fa-solid fa-mercury"></i>
-                  Gender: ${pet.gender}
+                  Gender: ${petGender}
                 </p>
                 <p><i class="fa-solid fa-dollar-sign"></i>
-                Price: ${pet.price}
+                Price: ${petPrice}
                 </p>
                 <div class="card-actions flex justify-between">
-                  <button class="btn ">
+                  <button class="btn add-button">
                     <i class="fa-regular fa-thumbs-up text-lg"></i>
                   </button>
                   <button class="btn text-[#0E7A81] text-lg">Adopt</button>
@@ -79,6 +95,10 @@ const displayAllPets = pets => {
 
   `;
     displayPets.appendChild(div);
+  });
+  const addButton = document.querySelectorAll('.add-button');
+  addButton.forEach((addButton, index) => {
+    addButton.addEventListener('click', () => handleAddPet(pets[index]));
   });
 };
 
