@@ -24,46 +24,43 @@ const displayCategories = categories => {
 
 loadCategories();
 
-// Handle search spinner
-const handleSpinner = () => {
-  const categoryContainer = document.getElementById('category-container');
-  const div = document.createElement('div');
-  div.id = 'spinner';
-  div.innerHTML = `
-    <div>
-      <span class="loading loading-spinner loading-lg"></span>
-
-    </div>  `;
-  categoryContainer.appendChild(div);
+// Handle spinner
+const handleSpinner = isLoading => {
+  const spinner = document.getElementById('spinner');
+  if (isLoading) {
+    spinner.style.display = 'flex';
+  } else {
+    spinner.style.display = 'none';
+  }
 };
 
-// Loadinag All pets
+// Load all pets
 const loadAllPet = async (category = '') => {
-  handleSpinner();
+  handleSpinner(true);
+
   setTimeout(async () => {
     const response = await fetch(
       `https://openapi.programming-hero.com/api/peddy/pets`
     );
     const data = await response.json();
 
-    const spinner = document.getElementById('spinner');
+    handleSpinner(false);
 
-    if (spinner) {
-      spinner.remove();
-    }
     const filterPets = category
       ? data.pets.filter(pet => pet.category === category)
       : data.pets;
+
     displayAllPets(filterPets);
   }, 2000);
 };
 
+// add pet function
 const handleAddPet = pet => {
   const selectPet = document.getElementById('selected-pet');
   const div = document.createElement('div');
   div.innerHTML = `
-    <div class="rounded-lg border-2 p-2">
-      <img class="w-full h-auto" src=${pet.image}/>
+    <div class="rounded-lg border-2 p-2 w-full h-auto">
+      <img src=${pet.image}/>
     </div>
   `;
   selectPet.appendChild(div);
@@ -95,7 +92,7 @@ const displayAllPets = pets => {
     const petPrice = pet.price ? pet.price : 'Not Available';
 
     div.innerHTML = `
-            <div class="card bg-base-100 shadow-xl h-[400px] object-cover">
+            <div class="card bg-base-100 shadow-xl h-[400px] object-cover ">
               <figure class="p-4">
                 <img class="object-cover" src=${pet.image}/>
               </figure>
@@ -114,11 +111,11 @@ const displayAllPets = pets => {
                 Price: ${petPrice}
                 </p>
                 <div class="card-actions flex justify-between">
-                  <button class="btn add-button">
-                    <i class="fa-regular fa-thumbs-up text-base"></i>
+                  <button class="btn add-button hover:bg-[#0E7A81] hover:text-white">
+                    <i class="fa-regular fa-thumbs-up text-base "></i>
                   </button>
-                  <button class="btn adopt-button  text-[#0E7A81] text-base">Adopt</button>
-                  <button  onclick="my_modal_1.showModal()" class="details-button btn text-[#0E7A81]  text-base">Details</button>
+                  <button class="btn adopt-button  text-[#0E7A81] text-base hover:bg-[#0E7A81] hover:text-white">Adopt</button>
+                  <button  onclick="my_modal_1.showModal()" class="details-button btn text-[#0E7A81]  text-base hover:bg-[#0E7A81] hover:text-white">Details</button>
                 </div>
               </div>
             </div>
