@@ -24,24 +24,46 @@ const displayCategories = categories => {
 
 loadCategories();
 
-// loading all pets
+// Handle search spinner
+const handleSpinner = () => {
+  const categoryContainer = document.getElementById('category-container');
+  const div = document.createElement('div');
+  div.id = 'spinner';
+  div.innerHTML = `
+    <div>
+      <span class="loading loading-spinner loading-lg"></span>
+
+    </div>  `;
+  categoryContainer.appendChild(div);
+};
+
+// Loadinag All pets
 const loadAllPet = async (category = '') => {
-  const response = await fetch(
-    `https://openapi.programming-hero.com/api/peddy/pets`
-  );
-  const data = await response.json();
-  const filterPets = category
-    ? data.pets.filter(pet => pet.category === category)
-    : data.pets;
-  displayAllPets(filterPets);
+  handleSpinner();
+  setTimeout(async () => {
+    const response = await fetch(
+      `https://openapi.programming-hero.com/api/peddy/pets`
+    );
+    const data = await response.json();
+
+    const spinner = document.getElementById('spinner');
+
+    if (spinner) {
+      spinner.remove();
+    }
+    const filterPets = category
+      ? data.pets.filter(pet => pet.category === category)
+      : data.pets;
+    displayAllPets(filterPets);
+  }, 2000);
 };
 
 const handleAddPet = pet => {
   const selectPet = document.getElementById('selected-pet');
   const div = document.createElement('div');
   div.innerHTML = `
-    <div class=" rounded-lg border-2 p-2 m-3">
-      <img src=${pet.image}/>
+    <div class="rounded-lg border-2 p-2">
+      <img class="w-full h-auto" src=${pet.image}/>
     </div>
   `;
   selectPet.appendChild(div);
@@ -73,9 +95,9 @@ const displayAllPets = pets => {
     const petPrice = pet.price ? pet.price : 'Not Available';
 
     div.innerHTML = `
-            <div class="card bg-base-100 w-76 shadow-xl h-[400px]  object-cover">
+            <div class="card bg-base-100 shadow-xl h-[400px] object-cover">
               <figure class="p-4">
-                <img src=${pet.image}/>
+                <img class="object-cover" src=${pet.image}/>
               </figure>
               <div class="card-body">
               <h2 class="font-extrabold text-xl">${petName}</h2>
@@ -92,15 +114,14 @@ const displayAllPets = pets => {
                 Price: ${petPrice}
                 </p>
                 <div class="card-actions flex justify-between">
-                  <button class="btn btn-sm add-button">
-                    <i class="fa-regular fa-thumbs-up text-lg"></i>
+                  <button class="btn add-button">
+                    <i class="fa-regular fa-thumbs-up text-base"></i>
                   </button>
-                  <button class="btn btn-sm text-[#0E7A81] text-lg">Adopt</button>
-                  <button id="" onclick="my_modal_1.showModal()" class="details-button btn text-[#0E7A81] btn-sm text-lg">Details</button>
+                  <button class="btn adopt-button  text-[#0E7A81] text-base">Adopt</button>
+                  <button  onclick="my_modal_1.showModal()" class="details-button btn text-[#0E7A81]  text-base">Details</button>
                 </div>
               </div>
             </div>
-
   `;
     displayPets.appendChild(div);
 
@@ -157,6 +178,14 @@ const displayAllPets = pets => {
   const addButton = document.querySelectorAll('.add-button');
   addButton.forEach((addButton, index) => {
     addButton.addEventListener('click', () => handleAddPet(pets[index]));
+  });
+
+  // Adopt button event listener
+  const adoptButton = document.querySelectorAll('.adopt-button');
+  adoptButton.forEach(button => {
+    button.addEventListener('click', () => {
+      alert('I am adopt button');
+    });
   });
 };
 
