@@ -90,7 +90,7 @@ const handleAddPet = pet => {
   const selectPet = document.getElementById('selected-pet');
   const div = document.createElement('div');
   div.innerHTML = `
-    <div class="rounded-lg border-2 p-2 w-full h-auto">
+    <div class="rounded-lg border-2 p-2">
       <img src=${pet.image}/>
     </div>
   `;
@@ -98,7 +98,6 @@ const handleAddPet = pet => {
 };
 
 // display all pets
-
 const displayAllPets = pets => {
   const displayPets = document.getElementById('display-pets');
   displayPets.innerHTML = '';
