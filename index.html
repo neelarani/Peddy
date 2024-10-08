@@ -39,13 +39,6 @@
     }
   </script>
 
-  <style>
-    .active {
-      border: 2px solid #0E7A81;
-
-    }
-  </style>
-
 </head>
 
 <body class="font-lato bg-[#FFFFFF]">
@@ -108,11 +101,11 @@
         <div id="spinner" class="hidden flex justify-center items-center">
           <i class=" fa-solid fa-spinner fa-spin text-4xl"></i>
         </div>
-        <!-- ************* -->
+        <!-- category container -->
         <div id="category-container" class="flex flex-col md:flex-row space-y-7 md:space-y-0 justify-between ">
         </div>
       </section>
-      <!-- Displey pets Dynamic section -->
+      <!-- Display pets Dynamic section -->
       <section class="w-11/12 mx-auto">
         <div class="flex justify-between items-start flex-col md:flex-row gap-4 mb-4">
           <h2 class="font-extrabold text-xl md:text-3xl">Best Deal For you </h2>
@@ -120,10 +113,11 @@
             text-lg font-semibold bg-[#0E7A81] text-white hover:text-black">Sort by Price</button>
         </div>
 
-        <div class="flex-col md:flex-row flex ">
+        <div class="flex-col md:flex-row flex">
           <div id="display-pets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  md:order-1 gap-5 p-2 border-2">
           </div>
 
+          <!-- select pet section -->
           <div id="selected-pet"
             class="w-full md:w-[450px] h-auto  md:order-2 border-2 grid grid-cols-1 md:grid-cols-2 gap-2 ml-2 ">
 
@@ -135,7 +129,10 @@
           </div>
         </div>
 
-        <!-- Adopt  -->
+        <!-- Adopt button counter  -->
+        <div id="adopt-container">
+
+        </div>
 
 
       </section>

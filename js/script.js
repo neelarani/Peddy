@@ -18,6 +18,7 @@ const displayCategories = categories => {
     <span>${category.category}</span>
     </div>
     `;
+
     categoryContainer.appendChild(div);
   });
 };
@@ -97,6 +98,8 @@ const handleAddPet = pet => {
 };
 
 // display all pets
+const modalContainer = document.getElementById('modal-container');
+
 const displayAllPets = pets => {
   const displayPets = document.getElementById('display-pets');
   displayPets.innerHTML = '';
@@ -124,7 +127,7 @@ const displayAllPets = pets => {
     div.innerHTML = `
             <div class="card bg-base-100 shadow-xl h-[400px] object-cover ">
               <figure class="p-4">
-                <img class="object-cover" src=${pet.image}/>
+                <img class="object-cover w-full h-full" src=${pet.image}/>
               </figure>
               <div class="card-body">
               <h2 class="font-extrabold text-xl">${petName}</h2>
@@ -144,31 +147,18 @@ const displayAllPets = pets => {
                   <button class="btn add-button hover:bg-[#0E7A81] hover:text-white">
                     <i class="fa-regular fa-thumbs-up text-base "></i>
                   </button>
-                  <button class="btn adopt-button  text-[#0E7A81] text-base hover:bg-[#0E7A81] hover:text-white">Adopt</button>
+                  <button class="btn adopt-button text-[#0E7A81] text-base hover:bg-[#0E7A81] hover:text-white">Adopt</button>
                   <button  onclick="my_modal_1.showModal()" class="details-button btn text-[#0E7A81]  text-base hover:bg-[#0E7A81] hover:text-white">Details</button>
                 </div>
               </div>
             </div>
   `;
-    displayPets.appendChild(div);
-
-    // pet toggle
-    div.addEventListener('click', () => {
-      const allPetCards = displayPets.getElementsByClassName('card');
-      for (let i = 0; i < allPetCards.length; i++) {
-        allPetCards[i].classList.remove('active');
-      }
-      div.classList.add('active');
-    });
 
     // Add event listeners for each details button
-    const detailsButtons = document.querySelectorAll('.details-button');
+    const detailsButton = div.querySelector('.details-button');
 
-    detailsButtons.forEach((button, index) => {
-      button.addEventListener('click', () => {
-        const pet = pets[index];
-        const modalContainer = document.getElementById('modal-container');
-        modalContainer.innerHTML = `
+    detailsButton.addEventListener('click', () => {
+      modalContainer.innerHTML = `
         <dialog id="my_modal_1" class="modal">
           <div class="modal-box">
           <img class="w-full rounded-lg" src=${pet.image}/>
@@ -197,18 +187,21 @@ const displayAllPets = pets => {
                 ${pet.pet_details}</p>
             <div class="modal-action ">
             <form method="dialog" class="w-full">
-            <button class="btn bg-[#0E7A81] text-white hover:bg-[#0E7A86] text-lg font-bold w-full">Cancle</button>
+            <button class="btn bg-[#0E7A81] text-white hover:bg-[#0E7A86] text-lg font-bold w-full">Cancel</button>
             </form>
           </div>
         </div>
     </dialog>
         `;
-        const modal = document.getElementById('my_modal_1');
-        if (modal) {
-          modal.showModal();
-        }
-      });
+      document.body.appendChild(modalContainer);
+
+      const modal = document.getElementById('my_modal_1');
+      if (modal) {
+        modal.showModal();
+      }
     });
+
+    displayPets.appendChild(div);
   });
 
   const addButton = document.querySelectorAll('.add-button');
@@ -220,7 +213,56 @@ const displayAllPets = pets => {
   const adoptButton = document.querySelectorAll('.adopt-button');
   adoptButton.forEach(button => {
     button.addEventListener('click', () => {
-      alert('I am adopt button');
+      // modal container
+      const modalContainer = document.createElement('div');
+      modalContainer.style.cssText = `
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background-color: rgba(0, 0, 0, 0.5); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      z-index: 1000;
+    `;
+
+      // modal content
+      const modalContent = document.createElement('div');
+      modalContent.style.cssText = `
+      width: 300px; 
+      height: 300px; 
+      background-color: #fff; 
+      color: #000; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      border-radius: 10px; 
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    `;
+      modalContent.innerHTML = `
+      <div class="space-y-3 flex flex-col justify-center items-center">
+      <h2 class="font-extrabold text-xl">Congratulations!</h2>
+      <p class="text-sm font-medium">Addoption Process is Start For your Pet</p>
+      <p id="counter" class="text-2xl font-bold">3</p>
+      </div>
+    `;
+
+      modalContainer.appendChild(modalContent);
+      document.body.appendChild(modalContainer);
+
+      let count = 3;
+      const counterDisplay = document.getElementById('counter');
+      const interval = setInterval(() => {
+        count--;
+        counterDisplay.innerText = count;
+        if (count === 0) {
+          clearInterval(interval);
+          modalContainer.remove();
+        }
+      }, 1000);
     });
   });
 };
