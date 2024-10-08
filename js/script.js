@@ -12,7 +12,7 @@ const displayCategories = categories => {
   categories.forEach(category => {
     const div = document.createElement('div');
     div.innerHTML = `
-    <div onclick="loadAllPet('${category.category}')" class="flex justify-center items-center font-extrabold gap-2 border-2 px-8 py-3 cursor-pointer">
+    <div onclick="loadAllPet('${category.category}')" class="flex justify-center rounded-full hover:border-[#0E7A81] transition-colors ease-in-out items-center font-extrabold gap-2 border-2 px-8 py-3 cursor-pointer">
 
     <img src="${category.category_icon}"/>
     <span>${category.category}</span>
@@ -151,6 +151,15 @@ const displayAllPets = pets => {
             </div>
   `;
     displayPets.appendChild(div);
+
+    // pet toggle
+    div.addEventListener('click', () => {
+      const allPetCards = displayPets.getElementsByClassName('card');
+      for (let i = 0; i < allPetCards.length; i++) {
+        allPetCards[i].classList.remove('active');
+      }
+      div.classList.add('active');
+    });
 
     // Add event listeners for each details button
     const detailsButtons = document.querySelectorAll('.details-button');
