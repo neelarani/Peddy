@@ -91,7 +91,7 @@ const handleAddPet = pet => {
   const div = document.createElement('div');
   div.innerHTML = `
     <div class="rounded-lg border-2 p-2">
-      <img src=${pet.image}/>
+      <img  src=${pet.image}/>
     </div>
   `;
   selectPet.appendChild(div);
@@ -142,11 +142,11 @@ const displayAllPets = pets => {
                 Price: ${petPrice}
                 </p>
                 <div class="card-actions flex justify-between">
-                  <button class="btn add-button bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">
+                  <button class="add-button bg-purple-100 px-3 rounded-lg py-2 font-bold hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">
                     <i class="fa-regular fa-thumbs-up text-base "></i>
                   </button>
-                  <button class="btn adopt-button text-[#0E7A81] text-base bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600 hover:text-white">Adopt</button>
-                  <button  onclick="my_modal_1.showModal()" class="details-button btn text-[#0E7A81]  text-base bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">Details</button>
+                  <button class="px-3 font-bold rounded-lg py-2 adopt-button text-[#0E7A81] text-base bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600 hover:text-white">Adopt</button>
+                  <button onclick="my_modal_1.showModal()" class="details-button font-bold px-3 py-2 rounded-lg text-[#0E7A81]  text-base bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">Details</button>
                 </div>
               </div>
             </div>
