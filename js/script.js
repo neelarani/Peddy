@@ -7,20 +7,42 @@ const loadCategories = async () => {
 };
 
 // display category function
+let activeCategory = null;
+
 const displayCategories = categories => {
   const categoryContainer = document.getElementById('category-container');
   categories.forEach(category => {
     const div = document.createElement('div');
     div.innerHTML = `
-    <div onclick="loadAllPet('${category.category}')" class="flex justify-center rounded-full bg-gradient-to-r from-purple-400 to-pink-300 hover:from-pink-300 hover:to-purple-300 transition-colors ease-in-out items-center font-extrabold gap-2 border-2 px-10 hover: py-3 cursor-pointer">
+    <div id="category-${category.category}" onclick=" toggleActive('${category.category}')" class="flex justify-center rounded-full bg-gradient-to-r from-purple-400 to-pink-300 hover:from-pink-300 hover:to-purple-300 transition-colors ease-in-out items-center font-extrabold gap-2 border-2 px-10 hover: py-3 cursor-pointer">
 
     <img class="w-9"  src="${category.category_icon}"/>
     <span>${category.category}</span>
     </div>
     `;
-
     categoryContainer.appendChild(div);
   });
+};
+
+// function to toggle active class for categories
+const toggleActive = category => {
+  if (activeCategory) {
+    const previousCategory = document.getElementById(
+      `category-${activeCategory}`
+    );
+    previousCategory.classList.remove(
+      'bg-blue-500',
+      'text-white',
+      'border-2',
+      'border-blue-500'
+    );
+  }
+
+  // set new active color
+  activeCategory = category;
+  const currentCategory = document.getElementById(`category-${category}`);
+  currentCategory.classList.add('bg-blue-500', 'text-white', 'border-blue-500');
+  loadAllPet(category);
 };
 
 loadCategories();
