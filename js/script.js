@@ -12,9 +12,9 @@ const displayCategories = categories => {
   categories.forEach(category => {
     const div = document.createElement('div');
     div.innerHTML = `
-    <div onclick="loadAllPet('${category.category}')" class="flex justify-center rounded-full hover:border-[#0E7A81] transition-colors ease-in-out items-center font-extrabold gap-2 border-2 px-8 py-3 cursor-pointer">
+    <div onclick="loadAllPet('${category.category}')" class="flex justify-center rounded-full bg-gradient-to-r from-purple-400 to-pink-300 hover:from-pink-300 hover:to-purple-300 transition-colors ease-in-out items-center font-extrabold gap-2 border-2 px-10 hover: py-3 cursor-pointer">
 
-    <img src="${category.category_icon}"/>
+    <img class="w-9"  src="${category.category_icon}"/>
     <span>${category.category}</span>
     </div>
     `;
@@ -98,7 +98,6 @@ const handleAddPet = pet => {
 };
 
 // display all pets
-const modalContainer = document.getElementById('modal-container');
 
 const displayAllPets = pets => {
   const displayPets = document.getElementById('display-pets');
@@ -125,9 +124,9 @@ const displayAllPets = pets => {
     const petPrice = pet.price ? pet.price : 'Not Available';
 
     div.innerHTML = `
-            <div class="card bg-base-100 shadow-xl h-[400px] object-cover ">
+            <div class="card bg-base-100 shadow-xl h-[400px]  ">
               <figure class="p-4">
-                <img class="object-cover w-full h-full" src=${pet.image}/>
+                <img class="object-cover" src=${pet.image}/>
               </figure>
               <div class="card-body">
               <h2 class="font-extrabold text-xl">${petName}</h2>
@@ -155,6 +154,7 @@ const displayAllPets = pets => {
   `;
 
     // Add event listeners for each details button
+    const modalContainer = document.getElementById('modal-container');
     const detailsButton = div.querySelector('.details-button');
 
     detailsButton.addEventListener('click', () => {
@@ -165,7 +165,7 @@ const displayAllPets = pets => {
             <h2 class="font-extrabold text-xl">${
               pet.pet_name || 'Not Available'
             }</h2>
-            <div class="grid grid-cols-2"> 
+            <div class="grid grid-cols-2">
                 <p>
                   <i class="fa-solid fa-bowl-food"></i>
                   ${pet.breed || 'Not Available'}
@@ -193,7 +193,6 @@ const displayAllPets = pets => {
         </div>
     </dialog>
         `;
-      document.body.appendChild(modalContainer);
 
       const modal = document.getElementById('my_modal_1');
       if (modal) {
