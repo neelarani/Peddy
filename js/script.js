@@ -143,11 +143,11 @@ const displayAllPets = pets => {
                 Price: ${petPrice}
                 </p>
                 <div class="card-actions flex justify-between">
-                  <button class="btn add-button hover:bg-[#0E7A81] hover:text-white">
+                  <button class="btn add-button bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">
                     <i class="fa-regular fa-thumbs-up text-base "></i>
                   </button>
-                  <button class="btn adopt-button text-[#0E7A81] text-base hover:bg-[#0E7A81] hover:text-white">Adopt</button>
-                  <button  onclick="my_modal_1.showModal()" class="details-button btn text-[#0E7A81]  text-base hover:bg-[#0E7A81] hover:text-white">Details</button>
+                  <button class="btn adopt-button text-[#0E7A81] text-base bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600 hover:text-white">Adopt</button>
+                  <button  onclick="my_modal_1.showModal()" class="details-button btn text-[#0E7A81]  text-base bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">Details</button>
                 </div>
               </div>
             </div>
