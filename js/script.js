@@ -90,8 +90,8 @@ const handleAddPet = pet => {
   const selectPet = document.getElementById('selected-pet');
   const div = document.createElement('div');
   div.innerHTML = `
-    <div class="rounded-lg border-2 p-2">
-      <img  src=${pet.image}/>
+    <div class="rounded-lg border-2 p-2 h-full">
+      <img class="object-cover" src=${pet.image}/>
     </div>
   `;
   selectPet.appendChild(div);
@@ -123,11 +123,11 @@ const displayAllPets = pets => {
     const petPrice = pet.price ? pet.price : 'Not Available';
 
     div.innerHTML = `
-            <div class="card bg-base-100 shadow-xl h-[400px]  ">
-              <figure class="p-4">
-                <img class="object-cover" src=${pet.image}/>
+            <div class="card bg-base-100 shadow-xl h-[420px]">
+              <figure class="">
+                <img class=" w-full p-3 h-full object-cover" src=${pet.image}/>
               </figure>
-              <div class="card-body">
+              <div class="p-3">
               <h2 class="font-extrabold text-xl">${petName}</h2>
                 <p>
                   <i class="fa-solid fa-bowl-food"></i>
@@ -141,12 +141,13 @@ const displayAllPets = pets => {
                 <p><i class="fa-solid fa-dollar-sign"></i>
                 Price: ${petPrice}
                 </p>
+                <div class="divider"></div>
                 <div class="card-actions flex justify-between">
-                  <button class="add-button bg-purple-100 px-3 rounded-lg py-2 font-bold hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">
+                  <button class="add-button px-4 border-2 rounded-lg py-1 font-bold hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">
                     <i class="fa-regular fa-thumbs-up text-base "></i>
                   </button>
-                  <button class="px-3 font-bold rounded-lg py-2 adopt-button text-[#0E7A81] text-base bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600 hover:text-white">Adopt</button>
-                  <button onclick="my_modal_1.showModal()" class="details-button font-bold px-3 py-2 rounded-lg text-[#0E7A81]  text-base bg-purple-100 hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">Details</button>
+                  <button class="px-4 font-bold border-2 rounded-lg py-1 adopt-button text-[#0E7A81] text-base hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600 hover:text-white">Adopt</button>
+                  <button onclick="my_modal_1.showModal()" class="details-button font-bold px-4 py-1 rounded-lg text-[#0E7A81] border-2  text-base hover:bg-gradient-to-l hover:from-[#0E7A81] hover:to-purple-600 transition-all duration-600  hover:text-white">Details</button>
                 </div>
               </div>
             </div>
