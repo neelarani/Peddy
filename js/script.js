@@ -34,6 +34,36 @@ const handleSpinner = isLoading => {
   }
 };
 
+// sort price
+const sortPrice = () => {
+  const sortContainer = document
+    .getElementById('sort-price')
+    .addEventListener('click', () => {
+      const displayPets = document.getElementById('display-pets');
+      const petCards = [...displayPets.children];
+
+      const sortedPets = petCards.sort((card1, card2) => {
+        const price1 = parseFloat(
+          card1
+            .querySelector('.fa-dollar-sign')
+            .nextSibling.nodeValue.trim()
+            .replace('Price:', '') || 0
+        );
+        const price2 = parseFloat(
+          card2
+            .querySelector('.fa-dollar-sign')
+            .nextSibling.nodeValue.trim()
+            .replace('Price:', '') || 0
+        );
+        return price2 - price1;
+      });
+      displayPets.innerHTML = ``;
+      sortedPets.forEach(petCard => displayPets.appendChild(petCard));
+    });
+};
+
+sortPrice();
+
 // Load all pets
 const loadAllPet = async (category = '') => {
   handleSpinner(true);

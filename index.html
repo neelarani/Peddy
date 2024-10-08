@@ -99,7 +99,7 @@
       <section class="w-11/12 mx-auto py-20">
         <!-- Spinner -->
         <div id="spinner" class="hidden flex justify-center items-center">
-          <i class="fa-solid fa-spinner fa-spin text-4xl"></i>
+          <i class=" fa-solid fa-spinner fa-spin text-4xl"></i>
         </div>
         <!-- ************* -->
         <div id="category-container" class="flex flex-col md:flex-row space-y-7 md:space-y-0 justify-between ">
@@ -109,15 +109,16 @@
       <section class="w-11/12 mx-auto">
         <div class="flex justify-between items-start flex-col md:flex-row gap-4 mb-4">
           <h2 class="font-extrabold text-xl md:text-3xl">Best Deal For you </h2>
-          <button class="btn md:btn-lg rounded-md
+          <button id="sort-price" class="btn md:btn-lg rounded-md
             text-lg font-semibold bg-[#0E7A81] text-white hover:text-black">Sort by Price</button>
         </div>
 
         <div class="flex-col md:flex-row flex ">
-          <div id="display-pets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  md:order-1 gap-5 p-2">
+          <div id="display-pets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  md:order-1 gap-5 p-2 border-2">
           </div>
 
-          <div id="selected-pet" class="w-[450px] h-auto  md:order-2 border-2 grid grid-cols-2 gap-3 ">
+          <div id="selected-pet"
+            class="w-[450px] h-auto  md:order-2 border-2 grid grid-cols-1 md:grid-cols-2 gap ml-2 ">
 
           </div>
 
