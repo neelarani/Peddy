@@ -42,7 +42,7 @@
 </head>
 
 <body class="font-lato bg-[#FFFFFF]">
-  <header class="bg-gradient-to-b from-green-100 to-gray-50 top-0 sticky">
+  <header class="bg-gradient-to-b from-green-100 to-gray-50 top-0 sticky z-20">
     <nav class=" w-11/12 mx-auto py-3">
       <div class="navbar flex justify-between">
         <div class="logo gap-2">
@@ -69,14 +69,11 @@
       <div class="flex flex-col justify-center items-center text-center space-y-5">
         <h2 class="text-lg font-semibold">Bringing Families Together ❤️‍🔥</h2>
         <h1 class="text-2xl md:text-4xl font-extrabold">Our Path to Adoption <br> Starts Here</h1>
-        <p class="text-base font-medium w-3/5 text-[#131313]">It is a long established fact that a reader will be
-          distracted by the
-          readable
-          content of a page when looking
-          at its
-          layout. The point of using Lorem Ipsum is that it has a.</p>
+        <p class="text-base font-medium w-3/5 text-[#131313]">Adopting a pet is a journey of love and care. It starts
+          with the decision to give an animal a forever home, leading to a bond that lasts a lifetime. Each step brings
+          joy and companionship, marking the beginning of a beautiful friendship.</p>
         <button
-          class=" bg-gradient-to-r from-[#0E7A81] to-purple-500 hover:from-[#0E7A81] hover:to-purple-600 px-6 py-3 text-white rounded-lg text-xl font-bold cursor-pointer">View
+          class=" bg-gradient-to-r from-[#0E7A81] to-purple-500 hover:from-[#0E7A81] hover:to-purple-600 px-6 py-3 text-white rounded-2xl text-lg font-bold cursor-pointer">View
           More</button>
       </div>
       <!-- Banner section ends here-->
@@ -89,20 +86,15 @@
       <!-- Adopt -->
       <div class="flex flex-col justify-center items-center text-center space-y-5">
         <h2 class="text-2xl font-extrabold">Adopt Your Best Friend</h2>
-        <p class="text-base font-medium w-3/5 text-[#131313]">It is a long established fact that a reader will be
-          distracted by the
-          readable
-          content of a page when looking
-          at its
-          layout. The point of using Lorem Ipsum is that it has a.</p>
+        <p class="text-base font-medium w-3/5 text-[#131313]">adopting a pet means welcoming a loyal companion into your
+          life. It's more than just giving them a home, it's about gaining a best friend who will bring joy, love and
+          comfort every day. Whether it's a playful dog a curious cat, or a gentle rabbit, adopting is the start of a
+          special bond that fills your life with happiness and unforgettable memories.</p>
       </div>
 
       <!-- Dynamic section starts here-->
       <section class="w-11/12 mx-auto py-20">
-        <!-- Spinner -->
-        <div id="spinner" class="hidden justify-center items-center">
-          <i class=" fa-solid fa-spinner fa-spin text-4xl"></i>
-        </div>
+
         <!-- category container -->
         <div id="category-container" class="flex flex-col md:flex-row space-y-7 md:space-y-0 justify-between ">
         </div>
@@ -112,18 +104,26 @@
         <div class="flex justify-between items-start flex-col md:flex-row gap-4 mb-4">
           <h2 class="font-extrabold text-xl md:text-3xl">Best Deal For you </h2>
           <button id="sort-price"
-            class="btn md:btn-lg rounded-lg
+            class="btn md:btn-lg rounded-2xl
             text-lg font-semibold bg-gradient-to-r from-[#0E7A81] to-purple-500 hover:from-[#0E7A81] hover:to-purple-600 text-white ">Sort by
             Price</button>
         </div>
 
-        <div class="flex-col md:flex-row flex">
-          <div id="display-pets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  md:order-1 gap-5 border-2">
+        <!-- Spinner -->
+        <div id="spinner" class="flex justify-center items-center">
+          <i class=" fa-solid fa-spinner fa-spin text-4xl"></i>
+        </div>
+
+
+        <div class="flex">
+          <div id="display-pets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 border-2">
+
           </div>
 
+
           <!-- select pet section -->
-          <div class="w-full md:w-[450px] h-auto md:order-2 border-2 ml-2">
-            <div id="selected-pet" class="grid grid-cols-2 gap-2 ">
+          <div class="w-full md:w-[450px] h-auto  border-2 ml-2">
+            <div id="selected-pet" class="grid  grid-cols-1 md:grid-cols-2 gap-2 ">
 
             </div>
 
@@ -184,7 +184,7 @@
         <input type="text" placeholder="Enter your Email" class="bg-[#FFFFFF0D] p-3 text-sm">
         <div>
           <button
-            class=" bg-gradient-to-r from-[#0E7A81] to-purple-500 hover:from-[#0E7A81] hover:to-purple-600 px-8 py-4 rounded-lg text-white font-semibold">Subscribe</button>
+            class=" bg-gradient-to-r from-[#0E7A81] to-purple-500 hover:from-[#0E7A81] hover:to-purple-600 px-8 py-4 rounded-2xl text-white font-semibold">Subscribe</button>
         </div>
       </div>
     </div>
