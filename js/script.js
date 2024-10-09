@@ -14,9 +14,9 @@ const displayCategories = categories => {
   categories.forEach(category => {
     const div = document.createElement('div');
     div.innerHTML = `
-    <div id="category-${category.category}" onclick=" toggleActive('${category.category}')" class="flex justify-center rounded-full bg-gradient-to-r from-purple-400 to-pink-300 hover:from-pink-300 hover:to-purple-300 transition-colors ease-in-out items-center font-extrabold gap-2 border-2 px-10 hover: py-3 cursor-pointer">
+    <div id="category-${category.category}" onclick=" toggleActive('${category.category}')" class="flex justify-center rounded-full bg-gradient-to-r from-purple-600 to-pink-300 hover:to-pink-300 hover:from-purple-700 transition-all duration-500 items-center font-extrabold gap-2 border-2 px-12 py-2 cursor-pointer">
 
-    <img class="w-9"  src="${category.category_icon}"/>
+    <img class="w-6" src="${category.category_icon}"/>
     <span>${category.category}</span>
     </div>
     `;
@@ -34,14 +34,18 @@ const toggleActive = category => {
       'bg-blue-500',
       'text-white',
       'border-2',
-      'border-blue-500'
+      'border-[#0E7A81]'
     );
   }
 
   // set new active color
   activeCategory = category;
   const currentCategory = document.getElementById(`category-${category}`);
-  currentCategory.classList.add('bg-blue-500', 'text-white', 'border-blue-500');
+  currentCategory.classList.add(
+    'bg-blue-500',
+    'text-white',
+    'border-[#0E7A81]'
+  );
   loadAllPet(category);
 };
 
@@ -209,7 +213,7 @@ const displayAllPets = pets => {
                 ${pet.pet_details}</p>
             <div class="modal-action ">
             <form method="dialog" class="w-full">
-            <button class="btn bg-[#0E7A81] text-white hover:bg-[#0E7A86] text-lg font-bold w-full">Cancel</button>
+            <button class="btn bg-gradient-to-r from-[#0E7A81] to-purple-500 hover:from-[#0E7A81] hover:to-purple-600  text-white text-lg font-bold w-full">Cancel</button>
             </form>
           </div>
         </div>
