@@ -14,7 +14,7 @@ const displayCategories = categories => {
   categories.forEach(category => {
     const div = document.createElement('div');
     div.innerHTML = `
-    <div id="category-${category.category}" onclick="toggleActive('${category.category}')" class="flex justify-center rounded-2xl bg-gradient-to-r from-purple-600 to-pink-300 hover:to-pink-300 hover:from-purple-700 transition-all duration-500 items-center font-extrabold gap-2 border-2 px-12 py-2 cursor-pointer">
+    <div id="category-${category.category}" onclick="toggleActive('${category.category}')"class="flex justify-center rounded-2xl bg-green-50  transition-all duration-500 items-center font-extrabold gap-2 border-2 px-12 py-2 cursor-pointer">
 
     <img class="w-6" src="${category.category_icon}"/>
     <span>${category.category}</span>
@@ -31,10 +31,12 @@ const toggleActive = category => {
       `category-${activeCategory}`
     );
     previousCategory.classList.remove(
-      'bg-blue-500',
-      'text-white',
-      'border-2',
-      'border-[#0E7A81]'
+      'bg-gradient-to-r',
+      'from-[#0E7A81]',
+      'to-purple-500',
+      'hover:to-[#0E7A81]',
+      'hover:from-purple-600',
+      'text-white'
     );
   }
 
@@ -42,9 +44,12 @@ const toggleActive = category => {
   activeCategory = category;
   const currentCategory = document.getElementById(`category-${category}`);
   currentCategory.classList.add(
-    'bg-blue-500',
-    'text-white',
-    'border-[#0E7A81]'
+    'bg-gradient-to-r',
+    'from-[#0E7A81]',
+    'to-purple-500',
+    'hover:to-[#0E7A81]',
+    'hover:from-purple-600',
+    'text-white'
   );
   loadAllPet(category);
 };
@@ -85,10 +90,13 @@ sortPrice();
 const loadAllPet = async category => {
   const spinner = document.getElementById('spinner');
   const displayPets = document.getElementById('display-pets');
+  const selectPetContainer = document.getElementById('select-pet-container');
   spinner.innerHTML = `
       <i class=" fa-solid fa-spinner fa-spin text-4xl"></i>
   `;
   displayPets.innerHTML = '';
+
+  selectPetContainer.classList.add('hidden');
   setTimeout(async () => {
     const response = await fetch(
       `https://openapi.programming-hero.com/api/peddy/pets`
@@ -103,6 +111,7 @@ const loadAllPet = async category => {
     spinner.innerHTML = '';
 
     displayAllPets(petsToDisplay);
+    selectPetContainer.classList.remove('hidden');
   }, 2000);
 };
 
