@@ -46,7 +46,7 @@ const toggleActive = category => {
     'text-white',
     'border-[#0E7A81]'
   );
-  loadAllPet(category);
+  loadPetsByCategory(category);
 };
 
 loadCategories();
@@ -83,18 +83,18 @@ sortPrice();
 
 // Load pets by category
 const loadPetsByCategory = async category => {
-  const spineer = (document.getElementById('spinner').style.display = 'flex');
-  setTimeout(async () => {
-    const response = await fetch(
-      `https://openapi.programming-hero.com/api/peddy/pets`
-    );
-    const data = await response.json();
-    const filterPets = data.pets.filter(pet => pet.category === category);
-    displayAllPets(filterPets);
+  document.getElementById('spinner').style.display = 'flex';
 
-    // hide spinner
-    spineer.style.display = 'none';
-  }, 2000);
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  const response = await fetch(
+    `https://openapi.programming-hero.com/api/peddy/pets`
+  );
+  const data = await response.json();
+  const filterPets = data.pets.filter(pet => pet.category === category);
+  displayAllPets(filterPets);
+
+  // hide spinner
+  document.getElementById('spinner').style.display = 'none';
 };
 
 // Load all pets
