@@ -46,7 +46,7 @@ const toggleActive = category => {
     'text-white',
     'border-[#0E7A81]'
   );
-  loadPetsByCategory(category);
+  loadAllPet(category);
 };
 
 loadCategories();
@@ -81,32 +81,29 @@ const sortPrice = () => {
 
 sortPrice();
 
-// Load pets by category
-const loadPetsByCategory = async category => {
-  document.getElementById('spinner').style.display = 'flex';
+// Load all pets with sipnner delay
+const loadAllPet = async category => {
+  const spinner = document.getElementById('spinner');
+  const displayPets = document.getElementById('display-pets');
+  spinner.innerHTML = `
+      <i class=" fa-solid fa-spinner fa-spin text-4xl"></i>
+  `;
+  displayPets.innerHTML = '';
+  setTimeout(async () => {
+    const response = await fetch(
+      `https://openapi.programming-hero.com/api/peddy/pets`
+    );
+    const data = await response.json();
 
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  const response = await fetch(
-    `https://openapi.programming-hero.com/api/peddy/pets`
-  );
-  const data = await response.json();
-  const filterPets = data.pets.filter(pet => pet.category === category);
-  displayAllPets(filterPets);
+    let petsToDisplay = data.pets;
 
-  // hide spinner
-  document.getElementById('spinner').style.display = 'none';
-};
+    if (category) {
+      petsToDisplay = data.pets.filter(pet => pet.category === category);
+    }
+    spinner.innerHTML = '';
 
-// Load all pets
-const loadAllPet = async () => {
-  document.getElementById('spinner').style.display = 'flex';
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  const response = await fetch(
-    `https://openapi.programming-hero.com/api/peddy/pets`
-  );
-  const data = await response.json();
-  displayAllPets(data.pets);
-  document.getElementById('spinner').style.display = 'none';
+    displayAllPets(petsToDisplay);
+  }, 2000);
 };
 
 // add pet function
