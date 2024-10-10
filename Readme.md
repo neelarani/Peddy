@@ -23,13 +23,13 @@ category is clicked. It use Tailwind Css for styling.
    will begin form 3 in desending order. When it reaches 1, it will
    automatically close .
 
-## ES6 features used.
+## 4. ES6 features used.
 
 1. I have used arrow functions.
 2. I havee used forEach()
 3. I have used async and await in the project.
 
-## Live link to the deployed project.
+## 5. Live link to the deployed project.
 
 # [https://assignm-six.surge.sh/](https://assignm-six.surge.sh/)
 
